@@ -1,17 +1,45 @@
 import requests
+import sys
 import time
 
-url = 'https://webhook.site/15796d3a-0001-40ba-a75b-3adbb4ac3932'
-no_of_requests = 3
+WEBHOOK_URL = sys.argv[1]
+NO_OF_REQUESTS = 3
 
 
-def call_http_request(url, res_no):
+def make_http_request(url, req_no):
+    """
+    Makes HTTP request and prints date for its response
+    :param url:
+    :param req_no:
+    """
     response = requests.get(url)
+    print("Getting date for response #"
+          " {}".format(req_no + 1))
     print("Date for response #{}:   {}".format(
-        res_no + 1,
+        req_no + 1,
         response.headers['Date']))
-    time.sleep(5)
+    time.sleep(1)
+
+
+def complete_sync_tasks():
+    """
+    Complete 'make HTTP requests' in a sync way
+    """
+    start_time = time.time()
+
+    [make_http_request(WEBHOOK_URL, res_no) for res_no
+     in range(NO_OF_REQUESTS)]
+
+    print("Time required to complete {} HTTP requests "
+          "in a sync way is: {:.2f} "
+          "seconds".format(NO_OF_REQUESTS,
+                           time.time() - start_time))
 
 
 if __name__ == '__main__':
-    [call_http_request(url, res_no) for res_no in range(no_of_requests)]
+    complete_sync_tasks()
+
+
+
+
+

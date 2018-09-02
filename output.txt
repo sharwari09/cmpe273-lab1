@@ -1,0 +1,25 @@
+
+
+Sharwaris-MacBook-Pro:Lab1 sharwariphadnis$ python3 http_call.py "https://webhook.site/15796d3a-0001-40ba-a75b-3adbb4ac3932"
+Getting date for response # 1
+Date for response #1:   Sun, 02 Sep 2018 19:21:57 GMT
+Getting date for response # 2
+Date for response #2:   Sun, 02 Sep 2018 19:21:59 GMT
+Getting date for response # 3
+Date for response #3:   Sun, 02 Sep 2018 19:22:01 GMT
+Time required to complete 3 HTTP requests in a sync way is: 5.80 seconds
+
+
+##########################################################################################################################
+
+
+Sharwaris-MacBook-Pro:Lab1 sharwariphadnis$ python3 http_async_call.py "https://webhook.site/15796d3a-0001-40ba-a75b-3adbb4ac3932"
+Getting date for response # 1
+Getting date for response # 2
+Getting date for response # 3
+Date for response #1 :  Sun, 02 Sep 2018 19:21:28 GMT
+Date for response #2 :  Sun, 02 Sep 2018 19:21:29 GMT
+Date for response #3 :  Sun, 02 Sep 2018 19:21:31 GMT
+Time required to complete 3 HTTP requests in an async way is: 4.62 seconds
+
+
