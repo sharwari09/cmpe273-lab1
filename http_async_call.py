@@ -30,10 +30,10 @@ def complete_async_tasks():
     # get_async_http_response coroutine'
 
     loop = asyncio.get_event_loop()
-    tasks = [asyncio.ensure_future(get_async_http_response(res_no))
+    tasks = [loop.create_task(get_async_http_response(res_no))
              for res_no in range(NO_OF_REQUESTS)]
 
-    loop.run_until_complete(asyncio.wait(tasks))
+    loop.run_until_complete(asyncio.gather(*tasks))
     loop.close()
 
     print("Time required to complete {} HTTP requests "
@@ -44,4 +44,3 @@ def complete_async_tasks():
 
 if __name__ == '__main__':
     complete_async_tasks()
-
